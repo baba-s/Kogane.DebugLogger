@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using UnityEngine;
 
 namespace UniDebugLogger
 {
@@ -43,6 +44,7 @@ namespace UniDebugLogger
 #if DISABLE_UNI_DEBUG_LOGGER
 		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
 #endif
+		[StringFormatMethod( "format" )]
 		public static void LogFormat( this IDebugLogger self, string format, params object[] args )
 		{
 			self._LogImpl( string.Format( format, args ), null );
@@ -54,6 +56,7 @@ namespace UniDebugLogger
 #if DISABLE_UNI_DEBUG_LOGGER
 		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
 #endif
+		[StringFormatMethod( "format" )]
 		public static void LogFormat( this IDebugLogger self, Object context, string format, params object[] args )
 		{
 			self._LogImpl( string.Format( format, args ), context );
@@ -87,6 +90,7 @@ namespace UniDebugLogger
 #if DISABLE_UNI_DEBUG_LOGGER
 		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
 #endif
+		[StringFormatMethod( "format" )]
 		public static void LogWarningFormat( this IDebugLogger self, string format, params object[] args )
 		{
 			self._LogWarningImpl( string.Format( format, args ), null );
@@ -98,6 +102,7 @@ namespace UniDebugLogger
 #if DISABLE_UNI_DEBUG_LOGGER
 		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
 #endif
+		[StringFormatMethod( "format" )]
 		public static void LogWarningFormat( this IDebugLogger self, Object context, string format, params object[] args )
 		{
 			self._LogWarningImpl( string.Format( format, args ), context );
@@ -131,6 +136,7 @@ namespace UniDebugLogger
 #if DISABLE_UNI_DEBUG_LOGGER
 		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
 #endif
+		[StringFormatMethod( "format" )]
 		public static void LogErrorFormat( this IDebugLogger self, string format, params object[] args )
 		{
 			self._LogErrorImpl( string.Format( format, args ), null );
@@ -142,6 +148,7 @@ namespace UniDebugLogger
 #if DISABLE_UNI_DEBUG_LOGGER
 		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
 #endif
+		[StringFormatMethod( "format" )]
 		public static void LogErrorFormat( this IDebugLogger self, Object context, string format, params object[] args )
 		{
 			self._LogErrorImpl( string.Format( format, args ), context );
