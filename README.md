@@ -1,11 +1,11 @@
-# Uni Debug Logger
+﻿# Uni Debug Logger
 
 タグ付きのデバッグログなどを使用できるパッケージ
 
 ## 使用例
 
 ```cs
-using UniDebugLogger;
+using Kogane;
 using UnityEngine;
 
 public class Example : MonoBehaviour

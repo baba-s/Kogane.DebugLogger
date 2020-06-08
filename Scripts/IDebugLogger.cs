@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UniDebugLogger
+namespace Kogane
 {
 	/// <summary>
 	/// デバッグログを出力するインターフェイス

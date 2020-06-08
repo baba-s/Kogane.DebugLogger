@@ -1,7 +1,7 @@
 ﻿using JetBrains.Annotations;
 using UnityEngine;
 
-namespace UniDebugLogger
+namespace Kogane
 {
 	/// <summary>
 	/// IDebugLogger 型の拡張メソッドを管理するクラス
