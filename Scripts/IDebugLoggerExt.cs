@@ -24,6 +24,7 @@ namespace Kogane
 #endif
 		public static void Log( this IDebugLogger self, object message )
 		{
+			if ( !self.IsEnable ) return;
 			self._LogImpl( message, null );
 		}
 
@@ -35,6 +36,7 @@ namespace Kogane
 #endif
 		public static void Log( this IDebugLogger self, object message, Object context )
 		{
+			if ( !self.IsEnable ) return;
 			self._LogImpl( message, context );
 		}
 
@@ -47,6 +49,7 @@ namespace Kogane
 		[StringFormatMethod( "format" )]
 		public static void LogFormat( this IDebugLogger self, string format, params object[] args )
 		{
+			if ( !self.IsEnable ) return;
 			self._LogImpl( string.Format( format, args ), null );
 		}
 
@@ -59,6 +62,7 @@ namespace Kogane
 		[StringFormatMethod( "format" )]
 		public static void LogFormat( this IDebugLogger self, Object context, string format, params object[] args )
 		{
+			if ( !self.IsEnable ) return;
 			self._LogImpl( string.Format( format, args ), context );
 		}
 
@@ -70,6 +74,7 @@ namespace Kogane
 #endif
 		public static void LogWarning( this IDebugLogger self, object message )
 		{
+			if ( !self.IsEnable ) return;
 			self._LogWarningImpl( message, null );
 		}
 
@@ -81,6 +86,7 @@ namespace Kogane
 #endif
 		public static void LogWarning( this IDebugLogger self, object message, Object context )
 		{
+			if ( !self.IsEnable ) return;
 			self._LogWarningImpl( message, context );
 		}
 
@@ -93,6 +99,7 @@ namespace Kogane
 		[StringFormatMethod( "format" )]
 		public static void LogWarningFormat( this IDebugLogger self, string format, params object[] args )
 		{
+			if ( !self.IsEnable ) return;
 			self._LogWarningImpl( string.Format( format, args ), null );
 		}
 
@@ -105,6 +112,7 @@ namespace Kogane
 		[StringFormatMethod( "format" )]
 		public static void LogWarningFormat( this IDebugLogger self, Object context, string format, params object[] args )
 		{
+			if ( !self.IsEnable ) return;
 			self._LogWarningImpl( string.Format( format, args ), context );
 		}
 
@@ -116,6 +124,7 @@ namespace Kogane
 #endif
 		public static void LogError( this IDebugLogger self, object message )
 		{
+			if ( !self.IsEnable ) return;
 			self._LogErrorImpl( message, null );
 		}
 
@@ -127,6 +136,7 @@ namespace Kogane
 #endif
 		public static void LogError( this IDebugLogger self, object message, Object context )
 		{
+			if ( !self.IsEnable ) return;
 			self._LogErrorImpl( message, context );
 		}
 
@@ -139,6 +149,7 @@ namespace Kogane
 		[StringFormatMethod( "format" )]
 		public static void LogErrorFormat( this IDebugLogger self, string format, params object[] args )
 		{
+			if ( !self.IsEnable ) return;
 			self._LogErrorImpl( string.Format( format, args ), null );
 		}
 
@@ -151,6 +162,7 @@ namespace Kogane
 		[StringFormatMethod( "format" )]
 		public static void LogErrorFormat( this IDebugLogger self, Object context, string format, params object[] args )
 		{
+			if ( !self.IsEnable ) return;
 			self._LogErrorImpl( string.Format( format, args ), context );
 		}
 	}
