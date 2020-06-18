@@ -9,11 +9,6 @@ namespace Kogane
 	public static partial class IDebugLoggerExt
 	{
 		//================================================================================
-		// 定数
-		//================================================================================
-		private const string CONDITIONAL_STRING = "aCQHuF32pvyB";
-		
-		//================================================================================
 		// 関数(static)
 		//================================================================================
 		/// <summary>
@@ -22,10 +17,10 @@ namespace Kogane
 #if DISABLE_UNI_DEBUG_LOGGER
 		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
 #endif
-		public static void Log( this IDebugLogger self, object message )
+		public static void LogIf( this IDebugLogger self, bool condition, object message )
 		{
-			if ( !self.IsEnable ) return;
-			self._LogImpl( message, null );
+			if ( !condition ) return;
+			self.Log( message );
 		}
 
 		/// <summary>
@@ -34,23 +29,10 @@ namespace Kogane
 #if DISABLE_UNI_DEBUG_LOGGER
 		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
 #endif
-		public static void Log( this IDebugLogger self, object message, Object context )
+		public static void LogIf( this IDebugLogger self, bool condition, object message, Object context )
 		{
-			if ( !self.IsEnable ) return;
-			self._LogImpl( message, context );
-		}
-
-		/// <summary>
-		/// ログを出力します
-		/// </summary>
-#if DISABLE_UNI_DEBUG_LOGGER
-		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
-#endif
-		[StringFormatMethod( "format" )]
-		public static void LogFormat( this IDebugLogger self, string format, params object[] args )
-		{
-			if ( !self.IsEnable ) return;
-			self._LogImpl( string.Format( format, args ), null );
+			if ( !condition ) return;
+			self.Log( message, context );
 		}
 
 		/// <summary>
@@ -60,10 +42,23 @@ namespace Kogane
 		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
 #endif
 		[StringFormatMethod( "format" )]
-		public static void LogFormat( this IDebugLogger self, Object context, string format, params object[] args )
+		public static void LogFormatIf( this IDebugLogger self, bool condition, string format, params object[] args )
 		{
-			if ( !self.IsEnable ) return;
-			self._LogImpl( string.Format( format, args ), context );
+			if ( !condition ) return;
+			self.LogFormat( format, args );
+		}
+
+		/// <summary>
+		/// ログを出力します
+		/// </summary>
+#if DISABLE_UNI_DEBUG_LOGGER
+		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
+#endif
+		[StringFormatMethod( "format" )]
+		public static void LogFormatIf( this IDebugLogger self, bool condition, Object context, string format, params object[] args )
+		{
+			if ( !condition ) return;
+			self.LogFormat( context, format, args );
 		}
 
 		/// <summary>
@@ -72,10 +67,10 @@ namespace Kogane
 #if DISABLE_UNI_DEBUG_LOGGER
 		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
 #endif
-		public static void LogWarning( this IDebugLogger self, object message )
+		public static void LogWarningIf( this IDebugLogger self, bool condition, object message )
 		{
-			if ( !self.IsEnable ) return;
-			self._LogWarningImpl( message, null );
+			if ( !condition ) return;
+			self.LogWarning( message );
 		}
 
 		/// <summary>
@@ -84,10 +79,10 @@ namespace Kogane
 #if DISABLE_UNI_DEBUG_LOGGER
 		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
 #endif
-		public static void LogWarning( this IDebugLogger self, object message, Object context )
+		public static void LogWarningIf( this IDebugLogger self, bool condition, object message, Object context )
 		{
-			if ( !self.IsEnable ) return;
-			self._LogWarningImpl( message, context );
+			if ( !condition ) return;
+			self.LogWarning( message, context );
 		}
 
 		/// <summary>
@@ -97,10 +92,10 @@ namespace Kogane
 		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
 #endif
 		[StringFormatMethod( "format" )]
-		public static void LogWarningFormat( this IDebugLogger self, string format, params object[] args )
+		public static void LogWarningFormatIf( this IDebugLogger self, bool condition, string format, params object[] args )
 		{
-			if ( !self.IsEnable ) return;
-			self._LogWarningImpl( string.Format( format, args ), null );
+			if ( !condition ) return;
+			self.LogWarningFormat( format, args );
 		}
 
 		/// <summary>
@@ -110,10 +105,10 @@ namespace Kogane
 		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
 #endif
 		[StringFormatMethod( "format" )]
-		public static void LogWarningFormat( this IDebugLogger self, Object context, string format, params object[] args )
+		public static void LogWarningFormatIf( this IDebugLogger self, bool condition, Object context, string format, params object[] args )
 		{
-			if ( !self.IsEnable ) return;
-			self._LogWarningImpl( string.Format( format, args ), context );
+			if ( !condition ) return;
+			self.LogWarningFormat( context, format, args );
 		}
 
 		/// <summary>
@@ -122,10 +117,10 @@ namespace Kogane
 #if DISABLE_UNI_DEBUG_LOGGER
 		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
 #endif
-		public static void LogError( this IDebugLogger self, object message )
+		public static void LogErrorIf( this IDebugLogger self, bool condition, object message )
 		{
-			if ( !self.IsEnable ) return;
-			self._LogErrorImpl( message, null );
+			if ( !condition ) return;
+			self.LogError( message );
 		}
 
 		/// <summary>
@@ -134,23 +129,10 @@ namespace Kogane
 #if DISABLE_UNI_DEBUG_LOGGER
 		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
 #endif
-		public static void LogError( this IDebugLogger self, object message, Object context )
+		public static void LogErrorIf( this IDebugLogger self, bool condition, object message, Object context )
 		{
-			if ( !self.IsEnable ) return;
-			self._LogErrorImpl( message, context );
-		}
-
-		/// <summary>
-		/// エラーログを出力します
-		/// </summary>
-#if DISABLE_UNI_DEBUG_LOGGER
-		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
-#endif
-		[StringFormatMethod( "format" )]
-		public static void LogErrorFormat( this IDebugLogger self, string format, params object[] args )
-		{
-			if ( !self.IsEnable ) return;
-			self._LogErrorImpl( string.Format( format, args ), null );
+			if ( !condition ) return;
+			self.LogError( message, context );
 		}
 
 		/// <summary>
@@ -160,10 +142,23 @@ namespace Kogane
 		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
 #endif
 		[StringFormatMethod( "format" )]
-		public static void LogErrorFormat( this IDebugLogger self, Object context, string format, params object[] args )
+		public static void LogErrorFormatIf( this IDebugLogger self, bool condition, string format, params object[] args )
 		{
-			if ( !self.IsEnable ) return;
-			self._LogErrorImpl( string.Format( format, args ), context );
+			if ( !condition ) return;
+			self.LogErrorFormat( format, args );
+		}
+
+		/// <summary>
+		/// エラーログを出力します
+		/// </summary>
+#if DISABLE_UNI_DEBUG_LOGGER
+		[System.Diagnostics.Conditional( CONDITIONAL_STRING )]
+#endif
+		[StringFormatMethod( "format" )]
+		public static void LogErrorFormatIf( this IDebugLogger self, bool condition, Object context, string format, params object[] args )
+		{
+			if ( !condition ) return;
+			self.LogErrorFormat( context, format, args );
 		}
 	}
 }
