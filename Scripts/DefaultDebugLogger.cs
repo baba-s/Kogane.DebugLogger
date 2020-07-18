@@ -40,7 +40,7 @@ namespace Kogane
 		/// <summary>
 		/// ログを出力します
 		/// </summary>
-		public void _LogImpl( object message, Object context )
+		void IDebugLogger._LogImpl( object message, Object context )
 		{
 			Debug.Log( message, context );
 		}
@@ -48,7 +48,7 @@ namespace Kogane
 		/// <summary>
 		/// 警告ログを出力します
 		/// </summary>
-		public void _LogWarningImpl( object message, Object context )
+		void IDebugLogger._LogWarningImpl( object message, Object context )
 		{
 			Debug.LogWarning( message, context );
 		}
@@ -56,7 +56,7 @@ namespace Kogane
 		/// <summary>
 		/// エラーログを出力します
 		/// </summary>
-		public void _LogErrorImpl( object message, Object context )
+		void IDebugLogger._LogErrorImpl( object message, Object context )
 		{
 			Debug.LogError( message, context );
 		}
