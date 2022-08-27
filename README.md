@@ -1,4 +1,4 @@
-﻿# Uni Debug Logger
+﻿# Kogane Debug Logger
 
 タグ付きのデバッグログなどを使用できるパッケージ
 
@@ -64,4 +64,4 @@ public class Example : MonoBehaviour
 
 ## 補足
 
-- `DISABLE_UNI_DEBUG_LOGGER` シンボルを定義することですべてのデバッグログを無効化できる  
+- `KOGANE_DISABLE_DEBUG_LOGGER` シンボルを定義することですべてのデバッグログを無効化できる  

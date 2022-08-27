@@ -1,5 +1,5 @@
 {
-    "name": "UniDebugLogger",
+    "name": "Kogane.DebugLogger",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
