@@ -82,7 +82,7 @@ namespace Kogane
 #if KOGANE_DISABLE_DEBUG_LOGGER
 			return null;
 #else
-            return new TaggedDebugLogger( tag, format );
+            return new( tag, format );
 #endif
         }
 
@@ -94,7 +94,7 @@ namespace Kogane
 #if KOGANE_DISABLE_DEBUG_LOGGER
 			return null;
 #else
-            return new TaggedDebugLogger( tag );
+            return new( tag );
 #endif
         }
     }

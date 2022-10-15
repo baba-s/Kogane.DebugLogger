@@ -24,7 +24,7 @@ namespace Kogane
 #if KOGANE_DISABLE_DEBUG_LOGGER
 			null;
 #else
-            m_instance ??= new NullDebugLogger();
+            m_instance ??= new();
 #endif
 
         //================================================================================
