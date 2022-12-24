@@ -10,12 +10,13 @@ namespace Kogane
         //================================================================================
         // 変数(readonly)
         //================================================================================
-        private readonly string m_tag;    // Debug.Log に付与するタグ
         private readonly string m_format; // Debug.Log にタグを付与する際の書式
 
         //================================================================================
         // プロパティ
         //================================================================================
+        public string Tag { get; }
+
         public bool IsEnable { get; set; } = true;
 
         private string Format => m_format ?? DefaultFormat;
@@ -37,7 +38,7 @@ namespace Kogane
         private TaggedDebugLogger( string tag, string format )
         {
             m_format = format;
-            m_tag    = tag;
+            Tag      = tag;
         }
 
         /// <summary>
@@ -52,7 +53,7 @@ namespace Kogane
         /// </summary>
         void IDebugLogger._LogImpl( object message, Object context )
         {
-            Debug.Log( string.Format( Format, m_tag, message ), context );
+            Debug.Log( string.Format( Format, Tag, message ), context );
         }
 
         /// <summary>
@@ -60,7 +61,7 @@ namespace Kogane
         /// </summary>
         void IDebugLogger._LogWarningImpl( object message, Object context )
         {
-            Debug.LogWarning( string.Format( Format, m_tag, message ), context );
+            Debug.LogWarning( string.Format( Format, Tag, message ), context );
         }
 
         /// <summary>
@@ -68,7 +69,7 @@ namespace Kogane
         /// </summary>
         void IDebugLogger._LogErrorImpl( object message, Object context )
         {
-            Debug.LogError( string.Format( Format, m_tag, message ), context );
+            Debug.LogError( string.Format( Format, Tag, message ), context );
         }
 
         //================================================================================
